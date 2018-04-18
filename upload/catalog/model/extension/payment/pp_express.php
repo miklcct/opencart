@@ -101,7 +101,7 @@ class ModelExtensionPaymentPPExpress extends Model {
 			$data['L_PAYMENTREQUEST_0_NUMBER' . $i] = $item['model'];
 			$data['L_PAYMENTREQUEST_0_AMT' . $i] = $item_price;
 
-			$item_total += $this->currency->format($item_price * $item['quantity'], $this->session->data['currency'], false, false);
+			$item_total += number_format($item_price * $item['quantity'], 2, '.', '');
 
 			$data['L_PAYMENTREQUEST_0_QTY' . $i] = $item['quantity'];
 
@@ -199,8 +199,8 @@ class ModelExtensionPaymentPPExpress extends Model {
 			}
 		}
 
-		$data['PAYMENTREQUEST_0_ITEMAMT'] = $this->currency->format($item_total, $this->session->data['currency'], false, false);
-		$data['PAYMENTREQUEST_0_AMT'] = $this->currency->format($item_total, $this->session->data['currency'], false, false);
+		$data['PAYMENTREQUEST_0_ITEMAMT'] = number_format($item_total, 2, '.', '');
+		$data['PAYMENTREQUEST_0_AMT'] = number_format($item_total, 2, '.', '');
 
 		$z = 0;
 
